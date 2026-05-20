@@ -3,557 +3,561 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro-Derivative Analyzer: Mushroom Growth Kinetics</title>
+    <title>Agro-Biotech Derivative Simulator | Oil Palm Lipid Synthesis</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- MathJax for gorgeous LaTeX formulas -->
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
-            },
-            svg: {
-                fontCache: 'global'
-            }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- KaTeX for beautiful math equations -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col antialiased">
 
-    <!-- Navbar / Header -->
-    <header class="bg-gradient-to-r from-emerald-800 to-teal-700 text-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-                <span class="bg-emerald-600/50 text-emerald-200 text-xs font-semibold px-2.5 py-1 rounded-full border border-emerald-500/30">
-                    SFP: Agro Product Technology Hub
-                </span>
-                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mt-1">
-                    Agro-Derivative Analyzer
-                </h1>
-                <p class="text-teal-100 text-sm mt-1">
-                    Applying Differential Calculus to Post-Harvest Cultivation Kinetics in Malaysia
-                </p>
+    <!-- Header Navigation -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50 px-4 py-4 md:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-500/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold heading-font tracking-tight text-white">Agro-Biotech Derivative Simulator</h1>
+                    <p class="text-xs text-slate-400">SFP: Agro Product Technology &bull; Bioscience Mathematical Modelling</p>
+                </div>
             </div>
-            <div class="flex items-center gap-3 bg-teal-900/40 p-3 rounded-lg border border-teal-600/20">
-                <div class="text-right">
-                    <p class="text-xs text-teal-200 font-medium">Data Reference Source</p>
-                    <p class="text-xs font-bold text-white">MARDI Agro-Technology Manual</p>
-                </div>
-                <div class="bg-teal-500 p-2 rounded-md">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-                </div>
+            <div class="flex items-center gap-2 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700 text-xs">
+                <span class="inline-block w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                <span class="text-slate-300 font-medium">Interactive Laboratory Sandbox</span>
             </div>
         </div>
     </header>
 
     <!-- Main Content Grid -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <!-- Left Column: Visualizations & Interactive Graph (7 Cols) -->
-        <section class="lg:col-span-7 flex flex-col gap-6">
+        <!-- Sidebar: Explanations & Controls (4 Cols) -->
+        <div class="lg:col-span-5 flex flex-col gap-6">
             
-            <!-- Graph Card -->
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
-                <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
+            <!-- Bioscience Context -->
+            <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 shadow-xl">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-emerald-400 font-semibold text-xs tracking-wider uppercase">Case Study</span>
+                    <span class="text-slate-500 text-xs">|</span>
+                    <span class="text-slate-400 text-xs font-mono">Elaeis guineensis</span>
+                </div>
+                <h2 class="text-xl font-bold heading-font text-emerald-300 mb-3">Lipid Biosynthesis in Malaysian Oil Palm</h2>
+                <div class="text-sm text-slate-300 space-y-3 leading-relaxed">
+                    <p>
+                        In oil palm processing, knowing the precise stage of lipid synthesis is critical. Mesocarp oil content follows a sigmoidal (S-shaped) growth pattern. 
+                    </p>
+                    <p>
+                        By applying the <strong>first derivative \( f'(x) \)</strong> to our lipid accumulation function, we calculate the instantaneous rate of oil synthesis. Identifying the point where lipid biosynthesis peaks (\( f''(x) = 0 \)) helps estate managers schedule harvests when oil yield is maximum, avoiding premature harvesting (poor oil density) or late harvests (high Free Fatty Acid contamination).
+                    </p>
+                    <p class="text-xs text-slate-400 bg-slate-900/50 p-2.5 rounded-lg border border-slate-800 font-mono">
+                        Source base models: <span class="text-emerald-400">Malaysian Palm Oil Board (MPOB)</span> Technical Studies on Fruit Ripening Kinetics (e.g., Halim et al.).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Mathematical Modelling Formulas -->
+            <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 shadow-xl">
+                <h3 class="text-md font-bold heading-font text-white mb-4 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                    The Mathematical Framework
+                </h3>
+                
+                <!-- Math formulas rendered with KaTeX -->
+                <div class="space-y-4 py-2">
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+                        <div class="text-xs text-slate-400 mb-1 font-semibold uppercase tracking-wider">Accumulated Oil Content \(f(x)\)</div>
+                        <div class="text-md font-mono py-2 text-center text-white">
+                            $$f(x) = \frac{L}{1 + e^{-k(x - x_0)}}$$
+                        </div>
+                        <div class="text-xs text-slate-400 mt-1">
+                            Where: 
+                            <ul class="list-disc list-inside mt-1 space-y-0.5 pl-1">
+                               <li>\(L\): Max oil content (%)</li>
+                               <li>\(k\): Synthesis rate constant</li>
+                               <li>\(x_0\): Midpoint transition week (WAA)</li>
+                               <li>\(x\): Weeks After Anthesis (WAA)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+                        <div class="text-xs text-slate-400 mb-1 font-semibold uppercase tracking-wider">Synthesis Accumulation Rate \(f'(x)\)</div>
+                        <div class="text-md font-mono py-2 text-center text-emerald-400">
+                            $$f'(x) = \frac{L \cdot k \cdot e^{-k(x - x_0)}}{(1 + e^{-k(x - x_0)})^2}$$
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1 leading-normal">
+                            Using the chain and quotient rules, the first derivative calculates the instantaneous speed of oil accumulation in percentage points per week.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parameters Adjustments (Interactive Controls) -->
+            <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 shadow-xl">
+                <h3 class="text-md font-bold heading-font text-white mb-4 flex items-center justify-between">
+                    <span>Adjust Biological Constants</span>
+                    <button id="resetBtn" class="text-xs text-emerald-400 hover:text-emerald-300 transition-colors">Reset Defaults</button>
+                </h3>
+                <div class="space-y-4">
+                    <!-- Slider 1: L -->
                     <div>
-                        <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                            <span class="w-3 h-3 bg-emerald-600 rounded-full animate-ping"></span>
-                            Interactive Growth Curve: $f(t)$ vs Time
-                        </h2>
-                        <p class="text-xs text-slate-500">
-                            Click anywhere on the curve to calculate the derivative $f'(t)$ instantly.
-                        </p>
+                        <div class="flex justify-between text-xs font-mono mb-1">
+                            <span class="text-slate-400">Max Mesocarp Oil Content (L)</span>
+                            <span class="text-white font-bold" id="valL">60%</span>
+                        </div>
+                        <input type="range" id="paramL" min="40" max="80" step="1" value="60" class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
                     </div>
-                    <div class="flex items-center gap-2">
-                        <button id="btnAnimate" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-medium transition-all shadow-sm flex items-center gap-1.5">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            Animate Flush Cycle
-                        </button>
-                        <button id="btnReset" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-medium transition-all">
-                            Reset View
-                        </button>
+                    <!-- Slider 2: x0 -->
+                    <div>
+                        <div class="flex justify-between text-xs font-mono mb-1">
+                            <span class="text-slate-400">Synthesis Peak Week (x₀)</span>
+                            <span class="text-white font-bold" id="valX0">17 WAA</span>
+                        </div>
+                        <input type="range" id="paramX0" min="14" max="20" step="0.5" value="17" class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
                     </div>
-                </div>
-
-                <!-- Canvas Wrapper -->
-                <div class="relative w-full h-[320px] md:h-[400px]">
-                    <canvas id="growthChart"></canvas>
-                </div>
-                
-                <div class="mt-4 flex flex-wrap justify-center gap-6 text-xs text-slate-600 border-t border-slate-100 pt-3">
-                    <span class="flex items-center gap-1.5">
-                        <span class="w-3 h-0.5 bg-emerald-600 inline-block"></span> 
-                        Total Biomass $f(t)$ (g)
-                    </span>
-                    <span class="flex items-center gap-1.5">
-                        <span class="w-3 h-0.5 border-t-2 border-dashed border-red-500 inline-block"></span> 
-                        Tangent Line (Calculated Rate of Change $f'(t)$)
-                    </span>
-                    <span class="flex items-center gap-1.5">
-                        <span class="w-3 h-0.5 bg-slate-300 inline-block"></span> 
-                        Growth Rate $f'(t)$ ($\times 5$ for scale visualization)
-                    </span>
+                    <!-- Slider 3: k -->
+                    <div>
+                        <div class="flex justify-between text-xs font-mono mb-1">
+                            <span class="text-slate-400">Synthesis Coeff / Slope (k)</span>
+                            <span class="text-white font-bold" id="valK">0.8</span>
+                        </div>
+                        <input type="range" id="paramK" min="0.4" max="1.5" step="0.05" value="0.8" class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                    </div>
                 </div>
             </div>
 
-            <!-- Mathematical Modeling Card -->
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-                <h3 class="text-md font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">
-                    Mathematical Formulation (Logistic Growth Kinetics)
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                        <p class="text-xs font-semibold text-emerald-800 uppercase tracking-wider mb-2">
-                            State Function: Cumulative Biomass
-                        </p>
-                        <div class="my-3 text-center text-lg font-mono">
-                            $$f(t) = \frac{L}{1 + e^{-k(t - t_0)}}$$
-                        </div>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            Models cumulative flush weight of Grey Oyster Mushrooms over time $t$ (days). Where $L = 120\text{g}$ is carrying capacity, $k = 0.5\text{ day}^{-1}$ is growth velocity, and $t_0 = 12\text{ days}$ is the peak growth inflection point.
-                        </p>
-                    </div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                        <p class="text-xs font-semibold text-red-800 uppercase tracking-wider mb-2">
-                            Derivative: Instantaneous Growth Rate
-                        </p>
-                        <div class="my-3 text-center text-lg font-mono">
-                            $$f'(t) = \frac{L \cdot k \cdot e^{-k(t-t_0)}}{\left(1 + e^{-k(t-t_0)}\right)^2}$$
-                        </div>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            Represents the exact rate of change of biomass accumulation (grams per day) at any instant $t$. It is derived using the <strong>Chain Rule</strong> and <strong>Quotient Rule</strong>.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
 
-        <!-- Right Column: Interactive Panel & Diagnostics (5 Cols) -->
-        <section class="lg:col-span-5 flex flex-col gap-6">
+        <!-- Main Chart Section (7 Cols) -->
+        <div class="lg:col-span-7 flex flex-col gap-6">
             
-            <!-- Real-Time Interactive Calculator (The "Brain") -->
-            <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl shadow-xl p-6 relative overflow-hidden">
-                <div class="absolute -right-12 -bottom-12 w-40 h-40 bg-teal-500/10 rounded-full blur-2xl"></div>
-                
-                <h3 class="text-sm font-semibold text-teal-400 uppercase tracking-wider mb-4">
-                    Derivative Diagnostic Panel
-                </h3>
-                
-                <div class="grid grid-cols-3 gap-3 mb-6">
-                    <div class="bg-white/10 p-3 rounded-xl border border-white/5 backdrop-blur-sm">
-                        <p class="text-[10px] text-slate-400 uppercase font-bold">Selected Day</p>
-                        <p id="calcDay" class="text-2xl font-black text-teal-300 mt-1">Day 12</p>
+            <!-- Graph Visualizer -->
+            <div class="bg-slate-800/30 border border-slate-700/60 rounded-3xl p-6 shadow-2xl flex flex-col">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-2">
+                    <div>
+                        <h2 class="text-lg font-bold heading-font text-white">Visual Synthesis Dashboard</h2>
+                        <p class="text-xs text-slate-400">Click anywhere on the graph lines or grid points to calculate derivatives</p>
                     </div>
-                    <div class="bg-white/10 p-3 rounded-xl border border-white/5 backdrop-blur-sm">
-                        <p class="text-[10px] text-slate-400 uppercase font-bold">Biomass $f(t)$</p>
-                        <p id="calcWeight" class="text-2xl font-black text-white mt-1">60.00g</p>
-                    </div>
-                    <div class="bg-white/10 p-3 rounded-xl border border-white/5 backdrop-blur-sm">
-                        <p class="text-[10px] text-slate-400 uppercase font-bold">Rate $f'(t)$</p>
-                        <p id="calcDerivative" class="text-2xl font-black text-emerald-400 mt-1">15.00 <span class="text-xs font-normal text-slate-300">g/d</span></p>
+                    <div class="flex gap-4 text-xs font-semibold bg-slate-900/60 p-2 rounded-xl border border-slate-800">
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                            <span>f(x) Content</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-3 h-3 rounded-full bg-amber-400 inline-block"></span>
+                            <span>f'(x) Synthesis Rate</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Layman Explanation Card -->
-                <div class="bg-emerald-950/40 border border-emerald-500/20 rounded-xl p-4 mb-6">
-                    <h4 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5 mb-1.5">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                        Layman Analysis & Actionable Insight:
-                    </h4>
-                    <p id="laymanText" class="text-xs text-slate-200 leading-relaxed">
-                        Loading localized insights... Click on different parts of the graph to check performance.
-                    </p>
+                <!-- Canvas container -->
+                <div class="relative w-full h-[320px] md:h-[400px]">
+                    <canvas id="synthesisChart" class="w-full h-full"></canvas>
+                </div>
+            </div>
+
+            <!-- Interactive Point Inspector -->
+            <div id="inspectorCard" class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-2xl p-6 shadow-xl transition-all duration-300 relative overflow-hidden">
+                <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-emerald-500/5 rounded-full blur-2xl"></div>
+                
+                <!-- Default / Untapped State -->
+                <div id="inspectorPrompt" class="text-center py-6">
+                    <p class="text-slate-400 text-sm mb-2">💡 Interactive Lab Prompt</p>
+                    <p class="text-emerald-300 font-semibold text-base">Click on any point along the timeline inside the graph to inspect lipid synthesis rates!</p>
                 </div>
 
-                <!-- Dynamic Growing Mushroom Animation / Progress -->
-                <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
-                    <div class="w-20 h-20 bg-slate-850 rounded-lg flex items-center justify-center border border-white/10 overflow-hidden relative">
-                        <!-- SVG Dynamic Mushroom -->
-                        <svg id="mushSvg" class="w-full h-full p-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Spawn Bag Substrate -->
-                            <rect x="25" y="60" width="50" height="35" rx="5" fill="#4B382A" stroke="#8C7866" stroke-width="2"/>
-                            <rect x="30" y="65" width="40" height="25" fill="#DFD3C3" rx="3" opacity="0.6"/>
-                            <text x="50" y="80" fill="#4B382A" font-size="6" font-weight="bold" text-anchor="middle">SUBSTRATE</text>
-                            
-                            <!-- Sprout neck -->
-                            <rect x="42" y="52" width="16" height="8" fill="#ECE0D1" stroke="#8C7866" stroke-width="1.5"/>
-                            
-                            <!-- Mushroom Stem -->
-                            <path id="svgStem" d="M 50 52 Q 50 40 50 35" stroke="#F5EBE6" stroke-width="8" stroke-linecap="round" />
-                            
-                            <!-- Mushroom Cap -->
-                            <path id="svgCap" d="M 30 35 Q 50 15 70 35" fill="#D5C5B5" stroke="#B09B88" stroke-width="1.5" />
-                            <ellipse id="svgCapUnder" cx="50" cy="35" rx="20" ry="4" fill="#E6DCD2" />
-                        </svg>
-                    </div>
-                    <div class="flex-grow flex flex-col justify-between h-full">
+                <!-- Active Analytical State -->
+                <div id="inspectorContent" class="hidden">
+                    <div class="flex justify-between items-start border-b border-slate-700/50 pb-4 mb-4">
                         <div>
-                            <h4 class="text-xs font-bold text-white">Visual Grow-O-Meter</h4>
-                            <p class="text-[11px] text-slate-400 mt-0.5">Simulated physical development of the first flush under standard Malaysian parameters.</p>
+                            <span class="bg-emerald-500/10 text-emerald-400 text-xs px-2.5 py-1 rounded-full border border-emerald-500/20 font-bold uppercase tracking-wider">Calculated Derivative Result</span>
+                            <h3 class="text-xl font-bold heading-font mt-2 text-white" id="insWeek">Week 17.0 (WAA)</h3>
                         </div>
-                        <!-- Progress bar representation -->
-                        <div class="w-full bg-slate-700 rounded-full h-2 mt-2">
-                            <div id="growProgress" class="bg-teal-400 h-2 rounded-full transition-all duration-300" style="width: 50%;"></div>
+                        <div class="text-right">
+                            <span class="text-slate-400 text-xs font-mono">Current Phase</span>
+                            <p class="font-bold text-sm text-amber-400" id="insPhaseName">Exponential Accumulation Phase</p>
                         </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+                            <div class="text-xs text-slate-400 uppercase tracking-wide">Total Cumulative Oil Content</div>
+                            <div class="text-2xl font-bold text-white mt-1" id="insOilVal">50.0%</div>
+                            <div class="text-xs text-slate-400 font-mono mt-0.5">Value of f(x)</div>
+                        </div>
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+                            <div class="text-xs text-slate-400 uppercase tracking-wide">Instantaneous Synthesis Rate</div>
+                            <div class="text-2xl font-bold text-amber-400 mt-1" id="insRateVal">+12.0% / wk</div>
+                            <div class="text-xs text-slate-400 font-mono mt-0.5">Derivative value f'(x)</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/40 p-4 rounded-xl border border-emerald-950/40">
+                        <h4 class="text-xs font-bold text-emerald-400 uppercase mb-1">Bioscience Layman's Interpretation</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed" id="insExplanation">
+                            Lipid accumulation is at its peak. The fruit mesocarp cells are actively synthesising triacylglycerols (TAGs). Harvesting at this moment captures the maximum accumulation velocity.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Malaysian Agro Bioscience Context -->
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
-                <h3 class="text-md font-bold text-slate-900 border-b border-slate-100 pb-2">
-                    Malaysian Bioscience Case Study Context
-                </h3>
-                <div class="space-y-3 text-xs text-slate-600 leading-relaxed">
-                    <p>
-                        In Malaysia's tropical climate, cultivating the Grey Oyster Mushroom <strong>(Cendawan Tiram Kelabu)</strong> is highly profitable. However, optimization of harvest scheduling is critical for post-harvest food quality. 
-                    </p>
-                    <p>
-                        According to research by <strong>MARDI (Agro-Technology Journal, Vol. 12)</strong>, mushrooms must be harvested at the tail-end of their acceleration phase — precisely when the 2nd derivative is negative ($f''(t) < 0$) and the growth rate $f'(t)$ is robust but beginning to decelerate. 
-                    </p>
-                    <p class="bg-amber-50 border-l-4 border-amber-500 p-3 rounded-r-lg text-amber-900 font-medium">
-                        <strong>Agro-Tech Secret:</strong> If harvested past Day 16, the cap margins split, fiber content increases rapidly, and sporulation drops market value. The derivative calculations allow farm managers to predict optimal crop shelf-life using automated vision sensors.
-                    </p>
+            <!-- Helpful Field Guide -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-slate-800/40 border border-slate-800 p-4 rounded-xl text-center">
+                    <span class="text-xs font-semibold text-slate-400 block mb-1">Lag Phase (10 - 14 WAA)</span>
+                    <span class="text-xs text-slate-300 block">Low content growth. Energy spent on fruit expansion rather than oil synthesis. Derivative \(f'(x)\) is near zero.</span>
+                </div>
+                <div class="bg-slate-800/40 border border-slate-800 p-4 rounded-xl text-center">
+                    <span class="text-xs font-semibold text-amber-400 block mb-1">Climacteric / Synthesis Peak</span>
+                    <span class="text-xs text-slate-300 block">Maximum \(f'(x)\). Enormous biochemical activity converting photoassimilates to fatty acids.</span>
+                </div>
+                <div class="bg-slate-800/40 border border-slate-800 p-4 rounded-xl text-center">
+                    <span class="text-xs font-semibold text-emerald-400 block mb-1">Harvest Window (20+ WAA)</span>
+                    <span class="text-xs text-slate-300 block">Accumulation rate stalls (\(f'(x) \to 0\)) as total oil plateaus. Target window for ideal processing extraction.</span>
                 </div>
             </div>
 
-        </section>
+        </div>
 
     </main>
 
-    <!-- Detailed Theory & Calculation Guide -->
-    <section class="bg-slate-100 border-t border-slate-200 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <svg class="w-5 h-5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                Understanding the Calculus behind Mushroom Growth
-            </h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-5 rounded-xl border border-slate-200">
-                    <h3 class="text-sm font-bold text-emerald-800 uppercase tracking-wide mb-3">1. The Growth Model</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed mb-3">
-                        The cumulative biomass of the mushroom is modeled using a Sigmoid (Logistic) function. In our equation:
-                    </p>
-                    <ul class="text-xs text-slate-600 list-disc pl-4 space-y-1.5">
-                        <li><strong>Carrying Capacity ($L$ = 120g):</strong> The maximum harvestable weight of a single mushroom flush out of a standard 900g sawdust spawn bag.</li>
-                        <li><strong>Inflexion point ($t_0$ = Day 12):</strong> The peak growth timing.</li>
-                        <li><strong>Growth Coefficient ($k$ = 0.5):</strong> Dictates how sharp the rapid-expansion phase is.</li>
-                    </ul>
-                </div>
-
-                <div class="bg-white p-5 rounded-xl border border-slate-200">
-                    <h3 class="text-sm font-bold text-red-800 uppercase tracking-wide mb-3">2. Step-by-Step Derivation</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed mb-3">
-                        Let's write our biomass function as: 
-                        $$f(t) = L \cdot [1 + e^{-k(t-t_0)}]^{-1}$$
-                    </p>
-                    <p class="text-xs text-slate-600 leading-relaxed mb-2">
-                        Applying the <strong>Chain Rule</strong>, the derivative is:
-                        $$f'(t) = -L \cdot [1 + e^{-k(t-t_0)}]^{-2} \cdot \frac{d}{dt}\left(1 + e^{-k(t-t_0)}\right)$$
-                        $$f'(t) = -L \cdot [1 + e^{-k(t-t_0)}]^{-2} \cdot (-k e^{-k(t-t_0)})$$
-                        $$f'(t) = \frac{L \cdot k \cdot e^{-k(t-t_0)}}{(1 + e^{-k(t-t_0)})^2}$$
-                    </p>
-                </div>
-
-                <div class="bg-white p-5 rounded-xl border border-slate-200">
-                    <h3 class="text-sm font-bold text-indigo-800 uppercase tracking-wide mb-3">3. Agro-Tech Decisions</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed mb-3">
-                        By matching crop sensors with these derivative curves, food processors can automate their operations:
-                    </p>
-                    <ul class="text-xs text-slate-600 list-disc pl-4 space-y-1.5">
-                        <li><strong>$f'(t) \approx 0$ (Days 0-7):</strong> Inoculation & Spawn Running. Keep incubator rooms dark.</li>
-                        <li><strong>$f''(t) > 0$ (Days 8-11):</strong> Pinning phase. Initiate high-pressure humidifiers.</li>
-                        <li><strong>Peak $f'(t)$ (Day 12):</strong> Extreme metabolic activity. Mushroom size doubles in 24 hrs.</li>
-                        <li><strong>$f''(t) < 0$ (Days 13-16):</strong> Optimal harvesting slot. Perfect crispness and high protein profile.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4">
-            <p>© 2026 Agro Product Technology (SFP) Interactive Simulation. Developed for educational applications of Bioscience Calculus.</p>
-            <p class="mt-2 text-slate-500">Based on standard MARDI Oyster Mushroom growth profiles under tropical climate specs (28°C - 30°C, 85% Relative Humidity).</p>
-        </div>
+    <footer class="border-t border-slate-800 bg-slate-950 py-6 px-4 text-center mt-auto">
+        <p class="text-xs text-slate-500">
+            Created for Malaysia Higher Education Academic Development &bull; SFP: Agro Product Technology curriculum aid.
+        </p>
+        <p class="text-[10px] text-slate-600 mt-1">
+            References: Malaysian Palm Oil Board (MPOB) Research Portals &bull; Standard Mathematical Modeling in Biological Systems
+        </p>
     </footer>
 
-    <!-- Main JavaScript Logic -->
+    <!-- Javascript Logical Implementation -->
     <script>
-        // Constants matching realistic Malaysian Grey Oyster Mushroom flush metrics
-        const L = 120; // Max flush weight in grams
-        const k = 0.5; // Growth rate constant
-        const t0 = 12; // Inflexion day
-        const maxDays = 25; // Flush cycle range (Days 0 to 25)
+        // Setup state variables
+        let modelL = 60.0;
+        let modelX0 = 17.0;
+        let modelK = 0.8;
 
-        // Generate coordinates for f(t) and f'(t)
-        const daysArray = [];
-        const biomassData = [];
-        const growthRateData = [];
-
-        for (let t = 0; t <= maxDays; t++) {
-            daysArray.push(t);
-            // Calculate f(t)
-            const ft = L / (1 + Math.exp(-k * (t - t0)));
-            biomassData.push(ft);
-            // Calculate f'(t)
-            const fPrime = (L * k * Math.exp(-k * (t - t0))) / Math.pow(1 + Math.exp(-k * (t - t0)), 2);
-            // Push scaled up for better chart visualization (labeled properly in tooltip)
-            growthRateData.push(fPrime * 5); 
+        // Interactive ranges
+        const xMin = 10;
+        const xMax = 24;
+        const step = 0.2; // Smooth curve sampling
+        const dataPointsX = [];
+        
+        // Populate X values for calculation
+        for (let x = xMin; x <= xMax; x = Math.round((x + step) * 10) / 10) {
+            dataPointsX.push(x);
         }
 
-        // Layman Explanations corresponding to specific growth stages
-        function getLaymanExplanation(t, wt, rate) {
-            const formattedWt = wt.toFixed(2);
-            const formattedRate = rate.toFixed(2);
-            
-            if (t >= 0 && t <= 7) {
-                return `<strong>Lag Phase (Spawn run & primordial onset):</strong> The biomass is extremely low at ${formattedWt}g. The growth rate is negligible at ${formattedRate}g/day because the mycelium is busy digesting substrate lignin. Keep bags dark with minimal ventilation. No harvest needed.`;
-            } else if (t >= 8 && t <= 11) {
-                return `<strong>Pinhead Acceleration Phase:</strong> The cap primordia are rapidly expanding! On Day ${t}, the mushroom has reached ${formattedWt}g. The rate of change is accelerating at a blazing ${formattedRate}g/day ($f''(t) > 0$). Ensure 85-90% humidity to avoid cap dehydration!`;
-            } else if (t === 12) {
-                return `<strong>Inflection Point (Max Growth Speed!):</strong> Peak velocity achieved on Day 12! The mushroom biomass is exactly ${formattedWt}g (half of capacity), growing at its absolute maximum rate of <b>${formattedRate} g/day</b>. Cell division is transitioning into rapid water elongation.`;
-            } else if (t >= 13 && t <= 16) {
-                return `<strong>Deceleration / Golden Harvest Phase:</strong> Although total biomass is growing to ${formattedWt}g, the growth rate is slowing down to ${formattedRate}g/day ($f''(t) < 0$). <b>This is the optimal Malaysian market harvest window!</b> Harvest right now before the cap margins turn up and sporulation reduces quality.`;
-            } else {
-                return `<strong>Plateau / Senescence Phase:</strong> Day ${t} represents the post-mature or harvested stage. Cumulative weight is plateauing at ${formattedWt}g and rate of change has dropped to a flat ${formattedRate}g/day. Substrate nutrients are depleted; clean the bag neck to prepare for the 2nd flush cycle!`;
-            }
+        // Calculate logistic value f(x)
+        function calculateFx(x, L, x0, k) {
+            return L / (1 + Math.exp(-k * (x - x0)));
         }
 
-        // Chart setup
-        const ctx = document.getElementById('growthChart').getContext('2d');
-        let clickedDay = 12; // Start at midpoint
-
-        // Dynamic tangent line calculator
-        function getTangentDataset(tValue) {
-            const ft = L / (1 + Math.exp(-k * (tValue - t0)));
-            const fPrime = (L * k * Math.exp(-k * (tValue - t0))) / Math.pow(1 + Math.exp(-k * (tValue - t0)), 2);
-            
-            // Build simple linear formula: y = f'(t)(x - t) + f(t)
-            const tangentLine = [];
-            for (let i = 0; i <= maxDays; i++) {
-                // Keep the tangent line visible in a small window around the point
-                if (i >= tValue - 3 && i <= tValue + 3) {
-                    const y = fPrime * (i - tValue) + ft;
-                    tangentLine.push({x: i, y: y});
-                } else {
-                    tangentLine.push({x: i, y: null});
-                }
-            }
-            return tangentLine;
+        // Calculate logistic derivative f'(x)
+        function calculateDfx(x, L, x0, k) {
+            const expTerm = Math.exp(-k * (x - x0));
+            const denominator = Math.pow(1 + expTerm, 2);
+            return (L * k * expTerm) / denominator;
         }
 
-        const chartData = {
-            labels: daysArray,
-            datasets: [
-                {
-                    label: 'Total Mushroom Biomass f(t) (grams)',
-                    data: biomassData,
-                    borderColor: 'rgb(5, 150, 105)', // Emerald
-                    backgroundColor: 'rgba(5, 150, 105, 0.1)',
-                    borderWidth: 3,
-                    tension: 0.35,
-                    fill: true,
-                    pointBackgroundColor: 'rgb(4, 120, 87)',
-                    pointRadius: 4,
-                    pointHoverRadius: 8,
-                    order: 2
-                },
-                {
-                    label: 'Scaled Growth Rate f\'(t) (x5)',
-                    data: growthRateData,
-                    borderColor: 'rgba(203, 213, 225, 0.8)', // Slate
-                    borderDash: [5, 5],
-                    borderWidth: 1.5,
-                    tension: 0.3,
-                    pointRadius: 0,
-                    fill: false,
-                    order: 3
-                },
-                {
-                    label: 'Tangent Line (Local Growth Velocity)',
-                    data: getTangentDataset(clickedDay),
-                    borderColor: 'rgb(239, 68, 68)', // Red Tangent
-                    borderWidth: 2,
-                    pointRadius: (ctx) => (ctx.dataIndex === clickedDay ? 6 : 0),
-                    pointBackgroundColor: 'rgb(239, 68, 68)',
-                    fill: false,
-                    order: 1
-                }
-            ]
-        };
+        // Generate values for the datasets
+        function getDatasets() {
+            const fxData = [];
+            const dfxData = [];
+            dataPointsX.forEach(x => {
+                fxData.push({ x: x, y: calculateFx(x, modelL, modelX0, modelK) });
+                dfxData.push({ x: x, y: calculateDfx(x, modelL, modelX0, modelK) });
+            });
+            return { fxData, dfxData };
+        }
 
-        const growthChart = new Chart(ctx, {
+        // Chart.js Configuration
+        const ctx = document.getElementById('synthesisChart').getContext('2d');
+        const initialData = getDatasets();
+
+        const synthesisChart = new Chart(ctx, {
             type: 'line',
-            data: chartData,
+            data: {
+                labels: dataPointsX,
+                datasets: [
+                    {
+                        label: "Oil Content f(x) (%)",
+                        data: initialData.fxData,
+                        borderColor: '#10b981', // emerald-500
+                        backgroundColor: 'rgba(16, 185, 129, 0.05)',
+                        fill: true,
+                        yAxisID: 'y',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        pointHitRadius: 12
+                    },
+                    {
+                        label: "Synthesis Rate f'(x) (%/week)",
+                        data: initialData.dfxData,
+                        borderColor: '#fbbf24', // amber-400
+                        backgroundColor: 'transparent',
+                        borderDash: [5, 5],
+                        yAxisID: 'y1',
+                        tension: 0.3,
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        pointHitRadius: 12
+                    }
+                ]
+            },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 interaction: {
                     mode: 'index',
-                    intersect: false
+                    intersect: false,
                 },
+                stacked: false,
                 plugins: {
+                    legend: {
+                        display: false // We use our custom legend in HTML
+                    },
                     tooltip: {
+                        backgroundColor: '#1e293b',
+                        titleColor: '#f8fafc',
+                        bodyColor: '#cbd5e1',
+                        borderColor: '#475569',
+                        borderWidth: 1,
+                        padding: 10,
                         callbacks: {
+                            title: function(context) {
+                                return `Week ${context[0].label} After Anthesis`;
+                            },
                             label: function(context) {
                                 let label = context.dataset.label || '';
-                                if (context.datasetIndex === 0) {
-                                    return `${label}: ${context.raw.toFixed(2)} g`;
-                                } else if (context.datasetIndex === 1) {
-                                    // Reverse the scale factor for tooltips
-                                    const actualRate = context.raw / 5;
-                                    return `Growth Velocity f'(t): ${actualRate.toFixed(2)} grams/day`;
-                                } else if (context.datasetIndex === 2 && context.raw.y !== null) {
-                                    return `Tangent Value: ${context.raw.y.toFixed(2)} g`;
+                                if (label) {
+                                    label += ': ';
                                 }
-                                return null;
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y.toFixed(2);
+                                }
+                                return label;
                             }
                         }
                     }
                 },
                 scales: {
                     x: {
+                        type: 'linear',
+                        min: xMin,
+                        max: xMax,
                         title: {
                             display: true,
-                            text: 'Time elapsed (Days relative to Primordial Initiation)',
-                            font: { size: 12, weight: 'bold' }
+                            text: 'Weeks After Anthesis (WAA)',
+                            color: '#94a3b8',
+                            font: {
+                                size: 12,
+                                weight: 'semibold'
+                            }
                         },
-                        grid: { color: 'rgba(241, 245, 249, 1)' }
+                        grid: {
+                            color: '#334155',
+                            borderDash: [2, 2]
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            stepSize: 1
+                        }
                     },
                     y: {
-                        min: 0,
-                        max: 140,
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
                         title: {
                             display: true,
-                            text: 'Accumulated Fresh Biomass (grams)',
-                            font: { size: 12, weight: 'bold' }
+                            text: 'Total Oil Content (% Dry Mesocarp)',
+                            color: '#10b981',
+                            font: {
+                                size: 12,
+                                weight: 'semibold'
+                            }
                         },
-                        grid: { color: 'rgba(241, 245, 249, 1)' }
+                        grid: {
+                            color: '#334155'
+                        },
+                        ticks: {
+                            color: '#10b981'
+                        },
+                        min: 0,
+                        max: 90
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Synthesis Rate (% points / week)',
+                            color: '#fbbf24',
+                            font: {
+                                size: 12,
+                                weight: 'semibold'
+                            }
+                        },
+                        grid: {
+                            drawOnChartArea: false, // only want the grid lines for one axis
+                        },
+                        ticks: {
+                            color: '#fbbf24'
+                        },
+                        min: 0,
+                        max: 25
                     }
                 },
                 onClick: (e) => {
-                    const points = growthChart.getElementsAtEventForMode(e, 'nearest', { intersect: false }, true);
+                    const points = synthesisChart.getElementsAtEventForMode(e, 'nearest', { intersect: false }, true);
                     if (points.length > 0) {
-                        const index = points[0].index;
-                        updateDashboard(index);
+                        const activePoint = points[0];
+                        const index = activePoint.index;
+                        const weekVal = dataPointsX[index];
+                        inspectPoint(weekVal);
                     }
                 }
             }
         });
 
-        // Update Dashboard Elements & Visual Grow-O-Meter
-        function updateDashboard(day) {
-            clickedDay = day;
-            
-            // Re-calculate the exact curves at specific day
-            const ft = L / (1 + Math.exp(-k * (day - t0)));
-            const fPrime = (L * k * Math.exp(-k * (day - t0))) / Math.pow(1 + Math.exp(-k * (day - t0)), 2);
-
-            // Update DOM
-            document.getElementById('calcDay').innerHTML = `Day ${day}`;
-            document.getElementById('calcWeight').innerHTML = `${ft.toFixed(1)}g`;
-            document.getElementById('calcDerivative').innerHTML = `${fPrime.toFixed(2)} <span class="text-xs font-normal text-slate-300">g/d</span>`;
-            document.getElementById('laymanText').innerHTML = getLaymanExplanation(day, ft, fPrime);
-
-            // Update Progress Bar
-            const progressPct = (ft / L) * 100;
-            document.getElementById('growProgress').style.width = `${progressPct}%`;
-
-            // Update SVG Mushroom size dynamically
-            const mushSvg = document.getElementById('mushSvg');
-            const svgStem = document.getElementById('svgStem');
-            const svgCap = document.getElementById('svgCap');
-            const svgCapUnder = document.getElementById('svgCapUnder');
-
-            // Scale factor based on the growth percentage (from tiny pins to big cap)
-            const growthScale = 0.2 + (ft / L) * 0.8; // scales from 0.2 to 1.0
-
-            // Apply SVG transforms for dynamic growth animation
-            // Stem: stretch y
-            const stemY = 52 - (25 * growthScale);
-            svgStem.setAttribute('d', `M 50 52 Q 50 42 50 ${stemY}`);
-            
-            // Cap: adjust position & widen size
-            const capWidth = 10 + (25 * growthScale); 
-            const capY = stemY;
-            svgCap.setAttribute('d', `M ${50 - capWidth} ${capY} Q 50 ${capY - (25 * growthScale)} ${50 + capWidth} ${capY}`);
-            svgCapUnder.setAttribute('cx', `50`);
-            svgCapUnder.setAttribute('cy', `${capY}`);
-            svgCapUnder.setAttribute('rx', `${capWidth}`);
-            svgCapUnder.setAttribute('ry', `${2 + (3 * growthScale)}`);
-
-            // Update Tangent Dataset on Chart
-            growthChart.data.datasets[2].data = getTangentDataset(day);
-            growthChart.update();
+        // Function to update visual chart when sliders change
+        function updateChart() {
+            const updated = getDatasets();
+            synthesisChart.data.datasets[0].data = updated.fxData;
+            synthesisChart.data.datasets[1].data = updated.dfxData;
+            synthesisChart.update('active');
         }
 
-        // Animation Player Functionality
-        let animationInterval = null;
-        const btnAnimate = document.getElementById('btnAnimate');
-        
-        function startCycleAnimation() {
-            if (animationInterval) {
-                clearInterval(animationInterval);
-                animationInterval = null;
-                btnAnimate.innerHTML = `
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Animate Flush Cycle
-                `;
-                return;
+        // Logic for Layman Bioscience Insights based on ripening phase
+        function getPhaseAndExplanation(week, fx, dfx) {
+            let phase = "";
+            let explanation = "";
+
+            if (week < (modelX0 - 3.5)) {
+                phase = "Phase I: Lag / Vegetative Growth Phase";
+                explanation = `At ${week} Weeks After Anthesis (WAA), the mesocarp is in its early developmental stage. Cell division and cell expansion dominate. The lipid pathway biochemical machinery (acyltransferases and fatty acid synthetase complexes) has not yet accelerated. Hence, the derivative f'(x) is close to 0 (+${dfx.toFixed(2)}% per week), meaning minimal lipid yield is added weekly. Harvesting now is commercially unviable.`;
+            } else if (week >= (modelX0 - 3.5) && week < (modelX0 - 0.5)) {
+                phase = "Phase II: Acceleration & Rapid Accumulation Phase";
+                explanation = `We are climbing the steep gradient of the accumulation curve. At ${week} WAA, derivative f'(x) is escalating swiftly. The chloroplast is producing high levels of acetyl-CoA, feeding lipid biosynthesis actively. For every extra week you leave the fruit on the palm, you secure an additional ${dfx.toFixed(1)} percentage points of pure oil in dry weight. The rapid rate changes highlight critical crop kinetics.`;
+            } else if (week >= (modelX0 - 0.5) && week <= (modelX0 + 0.5)) {
+                phase = "Phase III: Maximum Lipid Synthesis Velocity (Peak f'(x))";
+                explanation = `At ${week} WAA, we are at the mathematical point of inflection! This is where the derivative f'(x) reaches its maximum absolute value of +${dfx.toFixed(2)}% per week. Enzyme channels are fully saturated and working at maximal capacity to store lipids inside oil droplets. While total accumulated oil is around ${fx.toFixed(1)}%, this represents the ultimate chemical sprint in the mesocarp's development.`;
+            } else if (week > (modelX0 + 0.5) && week < (modelX0 + 4)) {
+                phase = "Phase IV: Deceleration / Late Ripening Phase";
+                explanation = `At ${week} WAA, lipid accumulation is nearing completion. Biosynthesis velocity f'(x) is falling (${dfx.toFixed(2)}% per week) because the storage volume of vacuoles in the mesocarp cells is filling up. Although total oil is high (${fx.toFixed(1)}%), each additional week on the tree provides progressively diminishing returns.`;
+            } else {
+                phase = "Phase V: Plateau & Senescence (Optimal Harvest Window)";
+                explanation = `At ${week} WAA, total oil content has reached its plateau asymptotic limit (${fx.toFixed(1)}%). The derivative f'(x) is practically 0 (+${dfx.toFixed(2)}% per week). Photosynthate is no longer converted to lipids. Optimal processing window is now! Leaving fruit any longer risks enzyme cell wall breakdown, activating lipases that hydrolyze lipids into unwanted Free Fatty Acids (FFA), reducing export market grade.`;
             }
 
-            btnAnimate.innerHTML = `
-                <svg class="w-3.5 h-3.5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.253 8H18"></path></svg>
-                Pause Cycle
-            `;
+            return { phase, explanation };
+        }
+
+        // Interactive calculation and populating text inspector card
+        function inspectPoint(week) {
+            const fx = calculateFx(week, modelL, modelX0, modelK);
+            const dfx = calculateDfx(week, modelL, modelX0, modelK);
+            const { phase, explanation } = getPhaseAndExplanation(week, fx, dfx);
+
+            // Display UI updates
+            document.getElementById('inspectorPrompt').classList.add('hidden');
+            document.getElementById('inspectorContent').classList.remove('hidden');
+
+            document.getElementById('insWeek').innerText = `Week ${week.toFixed(1)} After Anthesis (WAA)`;
+            document.getElementById('insPhaseName').innerText = phase;
+            document.getElementById('insOilVal').innerText = `${fx.toFixed(2)}%`;
+            document.getElementById('insRateVal').innerText = `+${dfx.toFixed(2)}% / week`;
+            document.getElementById('insExplanation').innerText = explanation;
+
+            // Highlight chosen item visually on chart
+            // Note: Find closest index
+            const index = dataPointsX.findIndex(val => Math.abs(val - week) < 0.01);
+            if (index !== -1) {
+                synthesisChart.setActiveElements([{
+                    datasetIndex: 0,
+                    index: index
+                }]);
+                synthesisChart.update();
+            }
+        }
+
+        // Bind interactive elements / sliders
+        const sliderL = document.getElementById('paramL');
+        const sliderX0 = document.getElementById('paramX0');
+        const sliderK = document.getElementById('paramK');
+
+        const valL = document.getElementById('valL');
+        const valX0 = document.getElementById('valX0');
+        const valK = document.getElementById('valK');
+
+        function syncSliders() {
+            modelL = parseFloat(sliderL.value);
+            modelX0 = parseFloat(sliderX0.value);
+            modelK = parseFloat(sliderK.value);
+
+            valL.innerText = `${modelL}%`;
+            valX0.innerText = `${modelX0} WAA`;
+            valK.innerText = `${modelK}`;
+
+            updateChart();
             
-            let currentDay = 0;
-            animationInterval = setInterval(() => {
-                updateDashboard(currentDay);
-                currentDay++;
-                if (currentDay > maxDays) {
-                    clearInterval(animationInterval);
-                    animationInterval = null;
-                    btnAnimate.innerHTML = `
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        Animate Flush Cycle
-                    `;
+            // Re-evaluate point if inspector is open
+            const currentInsText = document.getElementById('insWeek').innerText;
+            if (currentInsText) {
+                const match = currentInsText.match(/Week\s([0-9.]+)/);
+                if (match && match[1]) {
+                    inspectPoint(parseFloat(match[1]));
                 }
-            }, 350);
+            }
         }
 
-        // Event Listeners
-        btnAnimate.addEventListener('click', startCycleAnimation);
-        
-        document.getElementById('btnReset').addEventListener('click', () => {
-            if (animationInterval) {
-                clearInterval(animationInterval);
-                animationInterval = null;
-                btnAnimate.innerHTML = `
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Animate Flush Cycle
-                `;
-            }
-            updateDashboard(12); // reset to midpoint inflection
+        sliderL.addEventListener('input', syncSliders);
+        sliderX0.addEventListener('input', syncSliders);
+        sliderK.addEventListener('input', syncSliders);
+
+        // Reset functionality
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            sliderL.value = 60;
+            sliderX0.value = 17;
+            sliderK.value = 0.8;
+            syncSliders();
+            document.getElementById('inspectorPrompt').classList.remove('hidden');
+            document.getElementById('inspectorContent').classList.add('hidden');
+            synthesisChart.setActiveElements([]);
+            synthesisChart.update();
         });
 
-        // Initialize display to midpoint Day 12
+        // Trigger default highlight on start
         window.onload = function() {
-            updateDashboard(12);
+            setTimeout(() => {
+                inspectPoint(17.0);
+            }, 800);
         };
     </script>
 </body>
